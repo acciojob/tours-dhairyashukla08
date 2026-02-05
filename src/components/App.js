@@ -13,17 +13,17 @@ const App = () => {
     setTours(newTours);
   };
 
- const fetchTours = () => {
+  const fetchTours = () => {
     setLoading(true);
     fetch(url)
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((data) => {
         setTours(data);
         setLoading(false);
       })
-      .catch((error) => {
+      .catch((err) => {
         setLoading(false);
-        console.log(error);
+        console.log(err);
       });
   };
 
@@ -31,22 +31,14 @@ const App = () => {
     fetchTours();
   }, []);
 
-  if (loading) {
-    return (
-      <main id="main">
-        <Loading />
-      </main>
-    );
-  }
+  if (loading) return <main id="main"><Loading /></main>;
 
   if (tours.length === 0) {
     return (
       <main id="main">
         <div className="title">
           <h2>No tours left</h2>
-          <button className="btn" onClick={() => fetchTours()}>
-            Refresh
-          </button>
+          <button className="btn" onClick={fetchTours}>Refresh</button>
         </div>
       </main>
     );
