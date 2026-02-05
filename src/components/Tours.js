@@ -6,7 +6,6 @@ const Tours = ({ tours, removeTour }) => {
     <section>
       <div className="title">
         <h2>Our Tours</h2>
-        <div className="underline"></div>
       </div>
       <div>
         {tours.map((tour) => {
